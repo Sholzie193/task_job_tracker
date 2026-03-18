@@ -153,7 +153,7 @@ export function BenchmarkControlPanel({
             <input
               className="mt-3 w-full rounded-2xl border border-white/10 bg-white/6 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/35"
               onChange={(event) => onCustomModelChange(event.target.value)}
-              placeholder="Enter exact OpenAI model name"
+              placeholder={`Enter exact ${providerLabel} model name`}
               value={customModel}
             />
             <p className="mt-3 text-sm leading-6 text-slate-400">

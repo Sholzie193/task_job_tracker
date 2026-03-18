@@ -2,14 +2,19 @@ import type { BenchmarkProvider } from "@/lib/benchmark/types";
 
 export const openAiModelOptions = [
   {
-    label: "GPT-5.4",
-    value: "gpt-5.4",
-    note: "Frontier flagship reasoning baseline",
+    label: "GPT-5",
+    value: "gpt-5",
+    note: "Latest flagship baseline for broad frontier task evaluation",
   },
   {
-    label: "GPT-5.4 Mini",
-    value: "gpt-5.4-mini",
-    note: "Faster and cheaper directional run",
+    label: "GPT-5 Mini",
+    value: "gpt-5-mini",
+    note: "Lower-cost fast benchmark run with the current GPT-5 family",
+  },
+  {
+    label: "GPT-5 Nano",
+    value: "gpt-5-nano",
+    note: "Smallest GPT-5 variant for lightweight directional comparisons",
   },
   {
     label: "GPT-4.1",
@@ -25,19 +30,19 @@ export const openAiModelOptions = [
 
 export const anthropicModelOptions = [
   {
-    label: "Claude Sonnet 4.5",
-    value: "claude-sonnet-4-5",
-    note: "Balanced frontier default for broad task work",
+    label: "Claude Sonnet 4",
+    value: "claude-sonnet-4-20250514",
+    note: "Latest verified Sonnet 4 API release for balanced role-task evaluation",
   },
   {
     label: "Claude Opus 4.1",
-    value: "claude-opus-4-1",
-    note: "Higher-end reasoning and writing baseline",
+    value: "claude-opus-4-1-20250805",
+    note: "Latest verified Opus API release for maximum reasoning depth",
   },
   {
-    label: "Claude Haiku 4.5",
-    value: "claude-haiku-4-5",
-    note: "Faster lower-cost directional benchmark run",
+    label: "Claude Opus 4",
+    value: "claude-opus-4-20250514",
+    note: "Prior Opus 4 generation for direct capability comparison",
   },
 ] as const;
 
