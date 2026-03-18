@@ -35,6 +35,11 @@ export const anthropicModelOptions = [
     note: "Primary Anthropic balanced preset for broad role-task evaluation",
   },
   {
+    label: "Claude Sonnet 4.6",
+    value: "claude-sonnet-4.6",
+    note: "Updated Sonnet preset for newer balanced frontier benchmark runs",
+  },
+  {
     label: "Claude Opus 4.6",
     value: "claude-opus-4.6",
     note: "Highest-end Anthropic preset for deeper reasoning-heavy benchmarks",
