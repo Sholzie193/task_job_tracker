@@ -57,7 +57,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Badge tone="neutral" className="hidden sm:inline-flex">
-            OpenAI only
+            OpenAI + Anthropic
           </Badge>
           <Link href="/runs/latest">
             <Button size="sm" className="gap-2">

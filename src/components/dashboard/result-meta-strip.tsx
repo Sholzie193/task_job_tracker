@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Panel } from "@/components/ui/panel";
 import { BENCHMARK_NAME } from "@/lib/benchmark/constants";
+import { getProviderLabel } from "@/lib/benchmark/provider";
 import type { BenchmarkRunResult } from "@/lib/benchmark/types";
 import { formatRunDate } from "@/lib/utils";
 
@@ -11,7 +12,7 @@ export function ResultMetaStrip({
   run: BenchmarkRunResult;
   isSampleRun: boolean;
 }) {
-  const providerLabel = run.meta.provider === "openai" ? "OpenAI" : run.meta.provider;
+  const providerLabel = getProviderLabel(run.meta.provider);
 
   return (
     <Panel className="relative overflow-hidden">
@@ -58,4 +59,3 @@ export function ResultMetaStrip({
     </Panel>
   );
 }
-

@@ -1,4 +1,5 @@
-import OpenAI from "openai";
+import Anthropic from "@anthropic-ai/sdk";
+import type { Message } from "@anthropic-ai/sdk/resources/messages/messages";
 
 import { roleBenchmarks } from "@/data/roles";
 import {
@@ -19,9 +20,19 @@ import {
   type RawTaskEvaluation,
 } from "@/lib/benchmark/evaluation";
 
-const OPENAI_TIMEOUT_MS = 45_000;
+const ANTHROPIC_TIMEOUT_MS = 45_000;
 
-async function evaluateTaskWithOpenAI({
+function getAnthropicTextContent(message: Message) {
+  const textBlock = message.content.find((block) => block.type === "text");
+
+  if (!textBlock || textBlock.type !== "text") {
+    return null;
+  }
+
+  return textBlock.text?.trim() || null;
+}
+
+async function evaluateTaskWithAnthropic({
   apiKey,
   model,
   role,
@@ -32,30 +43,35 @@ async function evaluateTaskWithOpenAI({
   role: RoleBenchmarkConfig;
   task: RoleBenchmarkConfig["tasks"][number];
 }) {
-  const client = new OpenAI({
+  const client = new Anthropic({
     apiKey,
-    timeout: OPENAI_TIMEOUT_MS,
+    timeout: ANTHROPIC_TIMEOUT_MS,
   });
 
-  const response = await client.responses.create({
+  const message = await client.messages.create({
     model,
-    instructions: taskEvaluationSystemPrompt,
-    input: buildTaskEvaluationPrompt(role, task, model),
-    text: {
-      verbosity: "low",
+    max_tokens: 700,
+    stream: false,
+    temperature: 0.1,
+    system: taskEvaluationSystemPrompt,
+    output_config: {
       format: {
         type: "json_schema",
-        name: "task_evaluation",
-        strict: true,
         schema: taskEvaluationJsonSchema,
       },
     },
+    messages: [
+      {
+        role: "user",
+        content: buildTaskEvaluationPrompt(role, task, model),
+      },
+    ],
   });
 
-  const rawOutput = response.output_text?.trim();
+  const rawOutput = getAnthropicTextContent(message);
 
   if (!rawOutput) {
-    throw new Error(`OpenAI returned an empty result for ${role.name} / ${task.title}.`);
+    throw new Error(`Anthropic returned an empty result for ${role.name} / ${task.title}.`);
   }
 
   return normalizeRawEvaluation(
@@ -65,7 +81,7 @@ async function evaluateTaskWithOpenAI({
   );
 }
 
-export async function runOpenAIBenchmark({
+export async function runAnthropicBenchmark({
   apiKey,
   provider,
   model,
@@ -83,7 +99,7 @@ export async function runOpenAIBenchmark({
 
     for (const task of role.tasks) {
       taskResults.push(
-        await evaluateTaskWithOpenAI({
+        await evaluateTaskWithAnthropic({
           apiKey,
           model,
           role,

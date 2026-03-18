@@ -1,4 +1,4 @@
-export type BenchmarkProvider = "openai";
+export type BenchmarkProvider = "openai" | "anthropic";
 export type BenchmarkMode = "mock" | "live";
 export type RoleCategory = "white-collar" | "hybrid" | "physical";
 export type TaskDifficulty = "Low" | "Medium" | "High";

@@ -17,7 +17,7 @@ const monoFont = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Frontier Task Exposure Lab",
   description:
-    "A polished local benchmark runner for testing frontier OpenAI models against realistic role tasks and exposure scores.",
+    "A polished local benchmark runner for testing frontier OpenAI and Anthropic models against realistic role tasks and exposure scores.",
 };
 
 export default function RootLayout({

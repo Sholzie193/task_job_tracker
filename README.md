@@ -1,10 +1,10 @@
 # Frontier Task Exposure Lab
 
-Frontier Task Exposure Lab is a local-first MVP for benchmarking frontier OpenAI models against realistic role tasks instead of generic model leaderboards. It runs a fixed V1 role set, scores task-level automation and autonomy confidence, and aggregates those results into role exposure dashboards.
+Frontier Task Exposure Lab is a local-first MVP for benchmarking frontier OpenAI and Anthropic models against realistic role tasks instead of generic model leaderboards. It runs a fixed V1 role set, scores task-level automation and autonomy confidence, and aggregates those results into role exposure dashboards.
 
 ## What the app does
 
-- Runs a role exposure benchmark against your chosen OpenAI model
+- Runs a role exposure benchmark against your chosen OpenAI or Anthropic model
 - Shows the exact provider, model, benchmark version, run date, role count, and task count for every result
 - Breaks each role into eight realistic tasks for a total of 72 tasks in V1
 - Aggregates task scores into role exposure scores and benchmark-level summaries
@@ -52,16 +52,17 @@ The app now uses progressive disclosure instead of one long scrolling page:
 ## How to use the benchmark runner
 
 - Open `/runs/latest`
-- Select `Mock baseline` or `Live OpenAI`
+- Choose `OpenAI` or `Anthropic`
+- Select `Mock baseline` or `Live provider mode`
 - Choose a model from the preset list or type an exact model name manually
-- In live mode, paste your OpenAI API key into the runner panel
+- In live mode, paste your provider API key into the runner panel
 - Click `Start benchmark`
 
 The UI makes it explicit that the key is only used for the current local run. There is no database storage, auth layer, or team account system in V1.
 
 ## Where to add the OpenAI API key
 
-For V1, the key is entered directly in the benchmark runner UI. It is sent only for the current request to the local `/api/benchmark` route and is not persisted in a database.
+For V1, the provider API key is entered directly in the benchmark runner UI. It is sent only for the current request to the local `/api/benchmark` route and is not persisted in a database.
 
 ## Mock mode
 
@@ -75,13 +76,14 @@ Mock generation lives in:
 
 - [src/lib/benchmark/mock-engine.ts](/Users/sola/Desktop/AI_task_taker/src/lib/benchmark/mock-engine.ts)
 
-## Live OpenAI integration scaffold
+## Live provider integration scaffold
 
-The live OpenAI path is structured so it can be upgraded later without rewriting the UI:
+The live provider paths are structured so they can be upgraded later without rewriting the UI:
 
 - [src/app/api/benchmark/route.ts](/Users/sola/Desktop/AI_task_taker/src/app/api/benchmark/route.ts)
+- [src/lib/anthropic/client.ts](/Users/sola/Desktop/AI_task_taker/src/lib/anthropic/client.ts)
 - [src/lib/openai/client.ts](/Users/sola/Desktop/AI_task_taker/src/lib/openai/client.ts)
-- [src/lib/openai/prompts.ts](/Users/sola/Desktop/AI_task_taker/src/lib/openai/prompts.ts)
+- [src/lib/benchmark/evaluation.ts](/Users/sola/Desktop/AI_task_taker/src/lib/benchmark/evaluation.ts)
 
 The current scaffold:
 
@@ -106,7 +108,7 @@ To extend the benchmark:
 1. Add or modify roles/tasks in [src/data/roles.ts](/Users/sola/Desktop/AI_task_taker/src/data/roles.ts)
 2. Adjust scoring or aggregation behavior in [src/lib/benchmark/scoring.ts](/Users/sola/Desktop/AI_task_taker/src/lib/benchmark/scoring.ts)
 3. Refine mock generation in [src/lib/benchmark/mock-engine.ts](/Users/sola/Desktop/AI_task_taker/src/lib/benchmark/mock-engine.ts)
-4. Upgrade live evaluation prompts or response handling in [src/lib/openai/prompts.ts](/Users/sola/Desktop/AI_task_taker/src/lib/openai/prompts.ts) and [src/lib/openai/client.ts](/Users/sola/Desktop/AI_task_taker/src/lib/openai/client.ts)
+4. Upgrade live evaluation prompts or response handling in [src/lib/benchmark/evaluation.ts](/Users/sola/Desktop/AI_task_taker/src/lib/benchmark/evaluation.ts), [src/lib/openai/client.ts](/Users/sola/Desktop/AI_task_taker/src/lib/openai/client.ts), and [src/lib/anthropic/client.ts](/Users/sola/Desktop/AI_task_taker/src/lib/anthropic/client.ts)
 
 ## Project structure
 
@@ -137,6 +139,6 @@ src/
 
 ## Notes
 
-- V1 supports OpenAI only
+- V1 supports OpenAI and Anthropic
 - Results are capability and exposure indicators, not direct job-loss predictions
 - Physical roles score lower by design because LLMs are limited in embodied execution

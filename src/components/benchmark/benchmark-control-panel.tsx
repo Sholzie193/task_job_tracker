@@ -2,11 +2,13 @@
 
 import { Eye, EyeOff, KeyRound, RotateCcw, Shield, Sparkles } from "lucide-react";
 
+import { getProviderModelOptions } from "@/data/model-options";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
 import { BENCHMARK_SECURITY_NOTE, BENCHMARK_VERSION } from "@/lib/benchmark/constants";
-import type { BenchmarkMode } from "@/lib/benchmark/types";
+import { getApiKeyPlaceholder, getProviderLabel } from "@/lib/benchmark/provider";
+import type { BenchmarkMode, BenchmarkProvider } from "@/lib/benchmark/types";
 
 export function BenchmarkControlPanel({
   mode,
@@ -17,6 +19,7 @@ export function BenchmarkControlPanel({
   showKey,
   isRunning,
   onModeChange,
+  onProviderChange,
   onModelPresetChange,
   onCustomModelChange,
   onApiKeyChange,
@@ -26,13 +29,14 @@ export function BenchmarkControlPanel({
   onResetSession,
 }: {
   mode: BenchmarkMode;
-  provider: "openai";
+  provider: BenchmarkProvider;
   modelPreset: string;
   customModel: string;
   apiKey: string;
   showKey: boolean;
   isRunning: boolean;
   onModeChange: (mode: BenchmarkMode) => void;
+  onProviderChange: (provider: BenchmarkProvider) => void;
   onModelPresetChange: (model: string) => void;
   onCustomModelChange: (model: string) => void;
   onApiKeyChange: (value: string) => void;
@@ -41,8 +45,9 @@ export function BenchmarkControlPanel({
   onClearKey: () => void;
   onResetSession: () => void;
 }) {
-  const providerLabel = provider === "openai" ? "OpenAI" : provider;
+  const providerLabel = getProviderLabel(provider);
   const requiresKey = mode === "live";
+  const modelOptions = getProviderModelOptions(provider);
 
   return (
     <Panel className="h-full">
@@ -70,6 +75,27 @@ export function BenchmarkControlPanel({
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
             <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+              Provider
+            </p>
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              {(["openai", "anthropic"] as const).map((value) => (
+                <button
+                  className={`rounded-2xl border px-4 py-3 text-sm transition ${
+                    provider === value
+                      ? "border-cyan-300/30 bg-cyan-300/12 text-white"
+                      : "border-white/10 bg-white/6 text-slate-300 hover:border-white/20"
+                  }`}
+                  key={value}
+                  onClick={() => onProviderChange(value)}
+                  type="button"
+                >
+                  {getProviderLabel(value)}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
               Benchmark mode
             </p>
             <div className="mt-4 grid grid-cols-2 gap-2">
@@ -84,7 +110,7 @@ export function BenchmarkControlPanel({
                   onClick={() => onModeChange(value)}
                   type="button"
                 >
-                  {value === "mock" ? "Mock baseline" : "Live OpenAI"}
+                  {value === "mock" ? "Mock baseline" : `Live ${providerLabel}`}
                 </button>
               ))}
             </div>
@@ -112,18 +138,11 @@ export function BenchmarkControlPanel({
               onChange={(event) => onModelPresetChange(event.target.value)}
               value={modelPreset}
             >
-              <option className="bg-slate-950" value="gpt-5.4">
-                GPT-5.4
-              </option>
-              <option className="bg-slate-950" value="gpt-5.4-mini">
-                GPT-5.4 Mini
-              </option>
-              <option className="bg-slate-950" value="gpt-4.1">
-                GPT-4.1
-              </option>
-              <option className="bg-slate-950" value="o4-mini">
-                o4-mini
-              </option>
+              {modelOptions.map((option) => (
+                <option className="bg-slate-950" key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
               <option className="bg-slate-950" value="custom">
                 Custom model name
               </option>
@@ -138,15 +157,15 @@ export function BenchmarkControlPanel({
               value={customModel}
             />
             <p className="mt-3 text-sm leading-6 text-slate-400">
-              Use the dropdown for common baselines or enter the exact model string you
-              want to test in live mode.
+              Use the dropdown for common {providerLabel} baselines or enter the exact
+              model string you want to test in live mode.
             </p>
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-slate-950/45 p-4">
             <div className="flex items-center justify-between gap-3">
               <label className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
-                OpenAI API key
+                {providerLabel} API key
               </label>
               <Badge tone={requiresKey ? "warning" : "neutral"}>
                 {requiresKey ? "Required in live mode" : "Optional in mock mode"}
@@ -157,7 +176,7 @@ export function BenchmarkControlPanel({
               <input
                 className="h-14 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
                 onChange={(event) => onApiKeyChange(event.target.value)}
-                placeholder="sk-..."
+                placeholder={getApiKeyPlaceholder(provider)}
                 type={showKey ? "text" : "password"}
                 value={apiKey}
               />

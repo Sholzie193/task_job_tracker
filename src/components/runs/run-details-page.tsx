@@ -13,9 +13,11 @@ import { ShareResultCard } from "@/components/dashboard/share-result-card";
 import { ErrorState, LoadingState } from "@/components/dashboard/states";
 import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
+import { getDefaultModelForProvider } from "@/data/model-options";
 import { BENCHMARK_TASK_COUNT, roleBenchmarks } from "@/data/roles";
 import type {
   BenchmarkMode,
+  BenchmarkProvider,
   BenchmarkRunResult,
   RunBenchmarkRequest,
 } from "@/lib/benchmark/types";
@@ -30,6 +32,7 @@ const benchmarkSequence = roleBenchmarks.flatMap((role) =>
 
 export function RunDetailsPage({ runId }: { runId: string }) {
   const { run, isSampleRun, resetToSampleRun, setCurrentRun } = useCurrentBenchmarkRun();
+  const [provider, setProvider] = useState<BenchmarkProvider>(run.meta.provider);
   const [mode, setMode] = useState<BenchmarkMode>("mock");
   const [modelPreset, setModelPreset] = useState(run.meta.model);
   const [customModel, setCustomModel] = useState("");
@@ -41,8 +44,9 @@ export function RunDetailsPage({ runId }: { runId: string }) {
   const progressIntervalRef = useRef<number | null>(null);
 
   useEffect(() => {
+    setProvider(run.meta.provider);
     setModelPreset(run.meta.model);
-  }, [run.meta.model]);
+  }, [run.meta.model, run.meta.provider]);
 
   useEffect(() => {
     return () => {
@@ -83,7 +87,7 @@ export function RunDetailsPage({ runId }: { runId: string }) {
 
     try {
       const body: RunBenchmarkRequest = {
-        provider: "openai",
+        provider,
         model: effectiveModel,
         mode,
         apiKey: apiKey.trim() || undefined,
@@ -174,11 +178,17 @@ export function RunDetailsPage({ runId }: { runId: string }) {
           onClearKey={() => setApiKey("")}
           onCustomModelChange={setCustomModel}
           onModeChange={setMode}
+          onProviderChange={(nextProvider) => {
+            setProvider(nextProvider);
+            setModelPreset(getDefaultModelForProvider(nextProvider));
+            setCustomModel("");
+            setApiKey("");
+          }}
           onModelPresetChange={setModelPreset}
           onResetSession={resetToSampleRun}
           onRun={runBenchmark}
           onToggleKeyVisibility={() => setShowKey((current) => !current)}
-          provider="openai"
+          provider={provider}
           showKey={showKey}
         />
         {status === "running" ? (

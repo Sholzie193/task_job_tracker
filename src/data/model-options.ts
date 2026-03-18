@@ -1,3 +1,5 @@
+import type { BenchmarkProvider } from "@/lib/benchmark/types";
+
 export const openAiModelOptions = [
   {
     label: "GPT-5.4",
@@ -21,3 +23,28 @@ export const openAiModelOptions = [
   },
 ] as const;
 
+export const anthropicModelOptions = [
+  {
+    label: "Claude Sonnet 4.5",
+    value: "claude-sonnet-4-5",
+    note: "Balanced frontier default for broad task work",
+  },
+  {
+    label: "Claude Opus 4.1",
+    value: "claude-opus-4-1",
+    note: "Higher-end reasoning and writing baseline",
+  },
+  {
+    label: "Claude Haiku 4.5",
+    value: "claude-haiku-4-5",
+    note: "Faster lower-cost directional benchmark run",
+  },
+] as const;
+
+export function getProviderModelOptions(provider: BenchmarkProvider) {
+  return provider === "openai" ? openAiModelOptions : anthropicModelOptions;
+}
+
+export function getDefaultModelForProvider(provider: BenchmarkProvider) {
+  return getProviderModelOptions(provider)[0].value;
+}

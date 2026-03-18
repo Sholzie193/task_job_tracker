@@ -2,16 +2,18 @@ import { NextResponse } from "next/server";
 
 import { generateMockBenchmarkRun } from "@/lib/benchmark/mock-engine";
 import type { RunBenchmarkRequest } from "@/lib/benchmark/types";
+import { runAnthropicBenchmark } from "@/lib/anthropic/client";
 import { runOpenAIBenchmark } from "@/lib/openai/client";
+import { getProviderLabel } from "@/lib/benchmark/provider";
 
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as RunBenchmarkRequest;
     const runDate = new Date().toISOString();
 
-    if (body.provider !== "openai") {
+    if (body.provider !== "openai" && body.provider !== "anthropic") {
       return NextResponse.json(
-        { error: "Only the OpenAI provider is supported in V1." },
+        { error: "Only OpenAI and Anthropic are supported in this benchmark." },
         { status: 400 },
       );
     }
@@ -30,7 +32,7 @@ export async function POST(request: Request) {
 
       return NextResponse.json({
         run: generateMockBenchmarkRun({
-          provider: "openai",
+          provider: body.provider,
           model: body.model.trim(),
           runDate,
         }),
@@ -39,17 +41,27 @@ export async function POST(request: Request) {
 
     if (!body.apiKey?.trim()) {
       return NextResponse.json(
-        { error: "An OpenAI API key is required for live benchmark mode." },
+        {
+          error: `A ${getProviderLabel(body.provider)} API key is required for live benchmark mode.`,
+        },
         { status: 400 },
       );
     }
 
-    const run = await runOpenAIBenchmark({
-      apiKey: body.apiKey.trim(),
-      provider: "openai",
-      model: body.model.trim(),
-      runDate,
-    });
+    const run =
+      body.provider === "openai"
+        ? await runOpenAIBenchmark({
+            apiKey: body.apiKey.trim(),
+            provider: "openai",
+            model: body.model.trim(),
+            runDate,
+          })
+        : await runAnthropicBenchmark({
+            apiKey: body.apiKey.trim(),
+            provider: "anthropic",
+            model: body.model.trim(),
+            runDate,
+          });
 
     return NextResponse.json({ run });
   } catch (error) {
