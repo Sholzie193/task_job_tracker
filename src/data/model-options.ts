@@ -2,19 +2,19 @@ import type { BenchmarkProvider } from "@/lib/benchmark/types";
 
 export const openAiModelOptions = [
   {
-    label: "GPT-5",
-    value: "gpt-5",
-    note: "Latest flagship baseline for broad frontier task evaluation",
+    label: "GPT-5.4",
+    value: "gpt-5.4",
+    note: "Flagship OpenAI preset for the primary frontier benchmark run",
   },
   {
-    label: "GPT-5 Mini",
-    value: "gpt-5-mini",
-    note: "Lower-cost fast benchmark run with the current GPT-5 family",
+    label: "GPT-5.4 Mini",
+    value: "gpt-5.4-mini",
+    note: "Faster lower-cost GPT-5.4 variant for directional comparisons",
   },
   {
-    label: "GPT-5 Nano",
-    value: "gpt-5-nano",
-    note: "Smallest GPT-5 variant for lightweight directional comparisons",
+    label: "GPT-5.4 Nano",
+    value: "gpt-5.4-nano",
+    note: "Smallest GPT-5.4 preset for lightweight benchmark runs",
   },
   {
     label: "GPT-4.1",
@@ -30,19 +30,19 @@ export const openAiModelOptions = [
 
 export const anthropicModelOptions = [
   {
-    label: "Claude Sonnet 4",
-    value: "claude-sonnet-4-20250514",
-    note: "Latest verified Sonnet 4 API release for balanced role-task evaluation",
+    label: "Claude Sonnet 4.5",
+    value: "claude-sonnet-4.5",
+    note: "Primary Anthropic balanced preset for broad role-task evaluation",
+  },
+  {
+    label: "Claude Opus 4.6",
+    value: "claude-opus-4.6",
+    note: "Highest-end Anthropic preset for deeper reasoning-heavy benchmarks",
   },
   {
     label: "Claude Opus 4.1",
-    value: "claude-opus-4-1-20250805",
-    note: "Latest verified Opus API release for maximum reasoning depth",
-  },
-  {
-    label: "Claude Opus 4",
-    value: "claude-opus-4-20250514",
-    note: "Prior Opus 4 generation for direct capability comparison",
+    value: "claude-opus-4.1",
+    note: "Prior Opus baseline kept as a secondary comparator",
   },
 ] as const;
 
