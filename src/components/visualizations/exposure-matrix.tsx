@@ -11,15 +11,15 @@ import { cn } from "@/lib/utils";
 
 const bandStyles = {
   Minimal:
-    "border-emerald-300/35 bg-linear-to-br from-emerald-300/22 via-emerald-400/12 to-[var(--surface-2)]",
+    "border-emerald-400/36 bg-linear-to-br from-emerald-300/26 via-emerald-400/14 to-[var(--surface-2)]",
   Limited:
-    "border-lime-300/34 bg-linear-to-br from-lime-300/22 via-lime-400/10 to-[var(--surface-2)]",
+    "border-lime-400/34 bg-linear-to-br from-lime-300/24 via-lime-400/12 to-[var(--surface-2)]",
   Moderate:
-    "border-amber-300/34 bg-linear-to-br from-amber-300/24 via-amber-400/10 to-[var(--surface-2)]",
+    "border-amber-400/34 bg-linear-to-br from-amber-300/26 via-amber-400/14 to-[var(--surface-2)]",
   High:
-    "border-orange-400/36 bg-linear-to-br from-orange-300/26 via-orange-500/12 to-[var(--surface-2)]",
+    "border-orange-400/38 bg-linear-to-br from-orange-300/28 via-orange-500/16 to-[var(--surface-2)]",
   "Very High":
-    "border-red-400/42 bg-linear-to-br from-red-300/28 via-red-500/14 to-[var(--surface-2)]",
+    "border-red-400/46 bg-linear-to-br from-red-300/30 via-red-500/18 to-[var(--surface-2)]",
 } as const;
 
 const bandAccentStyles = {
@@ -31,11 +31,16 @@ const bandAccentStyles = {
 } as const;
 
 const bandBadgeStyles = {
-  Minimal: "border-emerald-300/30 bg-emerald-300/14 text-emerald-100",
-  Limited: "border-lime-300/30 bg-lime-300/14 text-lime-100",
-  Moderate: "border-amber-300/30 bg-amber-300/14 text-amber-100",
-  High: "border-orange-400/30 bg-orange-400/14 text-orange-100",
-  "Very High": "border-red-400/30 bg-red-400/14 text-red-100",
+  Minimal:
+    "border-[color:color-mix(in_srgb,#10b981_30%,transparent)] bg-[color:color-mix(in_srgb,#10b981_14%,var(--surface-soft))] text-[color:color-mix(in_srgb,var(--text-1)_74%,#10b981)]",
+  Limited:
+    "border-[color:color-mix(in_srgb,#84cc16_30%,transparent)] bg-[color:color-mix(in_srgb,#84cc16_14%,var(--surface-soft))] text-[color:color-mix(in_srgb,var(--text-1)_74%,#65a30d)]",
+  Moderate:
+    "border-[color:color-mix(in_srgb,#f59e0b_30%,transparent)] bg-[color:color-mix(in_srgb,#f59e0b_14%,var(--surface-soft))] text-[color:color-mix(in_srgb,var(--text-1)_74%,#b45309)]",
+  High:
+    "border-[color:color-mix(in_srgb,#f97316_30%,transparent)] bg-[color:color-mix(in_srgb,#f97316_14%,var(--surface-soft))] text-[color:color-mix(in_srgb,var(--text-1)_74%,#c2410c)]",
+  "Very High":
+    "border-[color:color-mix(in_srgb,#ef4444_32%,transparent)] bg-[color:color-mix(in_srgb,#ef4444_14%,var(--surface-soft))] text-[color:color-mix(in_srgb,var(--text-1)_74%,#b91c1c)]",
 } as const;
 
 const spanMap = {
