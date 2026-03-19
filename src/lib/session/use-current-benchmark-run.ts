@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import { SESSION_RUN_EVENT } from "@/lib/benchmark/constants";
 import { sampleBenchmarkRun } from "@/lib/benchmark/sample-run";
 import type { BenchmarkRunResult, CurrentRunState } from "@/lib/benchmark/types";
 import {
@@ -26,6 +27,31 @@ export function useCurrentBenchmarkRun() {
       isSampleRun: true,
     };
   });
+
+  useEffect(() => {
+    function syncRunState(event: Event) {
+      const customEvent = event as CustomEvent<BenchmarkRunResult | null>;
+
+      if (customEvent.detail) {
+        setState({
+          run: customEvent.detail,
+          isSampleRun: false,
+        });
+        return;
+      }
+
+      setState({
+        run: sampleBenchmarkRun,
+        isSampleRun: true,
+      });
+    }
+
+    window.addEventListener(SESSION_RUN_EVENT, syncRunState as EventListener);
+
+    return () => {
+      window.removeEventListener(SESSION_RUN_EVENT, syncRunState as EventListener);
+    };
+  }, []);
 
   function setCurrentRun(run: BenchmarkRunResult) {
     storeBenchmarkRun(run);

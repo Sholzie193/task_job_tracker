@@ -37,12 +37,12 @@ export function ExposureBarChartClient({ run }: { run: BenchmarkRunResult }) {
         layout="vertical"
         margin={{ top: 8, right: 12, left: 12, bottom: 8 }}
       >
-        <CartesianGrid stroke="rgba(255,255,255,0.06)" strokeDasharray="3 3" />
+        <CartesianGrid stroke="var(--grid-line)" strokeDasharray="3 3" />
         <XAxis
           axisLine={false}
           domain={[0, 100]}
           type="number"
-          tick={{ fill: "#94a3b8", fontSize: 11 }}
+          tick={{ fill: "var(--text-3)", fontSize: 11 }}
           tickLine={false}
         />
         <YAxis
@@ -57,22 +57,23 @@ export function ExposureBarChartClient({ run }: { run: BenchmarkRunResult }) {
               .replace("Junior Software Developer", "Junior Developer")
               .replace("Project Coordinator", "Project Coord.")
           }
-          tick={{ fill: "#94a3b8", fontSize: 11 }}
+          tick={{ fill: "var(--text-3)", fontSize: 11 }}
           tickLine={false}
           type="category"
           width={126}
         />
         <Tooltip
           contentStyle={{
-            border: "1px solid rgba(255,255,255,0.08)",
+            border: "1px solid var(--border)",
             borderRadius: "18px",
-            background: "rgba(8,15,29,0.96)",
-            color: "#fff",
+            background: "var(--surface-2)",
+            color: "var(--text-1)",
+            boxShadow: "var(--shadow-soft)",
           }}
-          cursor={{ fill: "rgba(255,255,255,0.03)" }}
+          cursor={{ fill: "color-mix(in srgb, var(--accent) 10%, transparent)" }}
           formatter={(value) => [`Exposure: ${String(value ?? "")}`, "Score"]}
-          itemStyle={{ color: "#f8fafc" }}
-          labelStyle={{ color: "#f8fafc", fontWeight: 600 }}
+          itemStyle={{ color: "var(--text-1)" }}
+          labelStyle={{ color: "var(--text-1)", fontWeight: 600 }}
         />
         <Bar dataKey="exposure" radius={[0, 10, 10, 0]}>
           {data.map((entry) => (

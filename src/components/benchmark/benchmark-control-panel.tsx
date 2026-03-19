@@ -55,26 +55,26 @@ export function BenchmarkControlPanel({
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <Badge tone="brand">Run Benchmark</Badge>
-            <h2 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-white">
+            <h2 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
               Local benchmark runner
             </h2>
-            <p className="mt-2 text-sm leading-6 text-slate-300">
+            <p className="mt-2 text-sm leading-6 text-[color:var(--text-2)]">
               Choose the model, keep the key in the current session only, and run
               the V{BENCHMARK_VERSION.replace("V", "")} benchmark against the fixed
               nine-role task set.
             </p>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-slate-950/45 px-4 py-3">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+          <div className="neo-inset rounded-3xl px-4 py-3">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               Provider tested
             </p>
-            <p className="mt-2 text-sm font-medium text-white">{providerLabel}</p>
+            <p className="mt-2 text-sm font-medium text-[color:var(--text-1)]">{providerLabel}</p>
           </div>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+          <div className="neo-inset rounded-3xl p-4">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               Provider
             </p>
             <div className="mt-4 grid grid-cols-2 gap-2">
@@ -82,8 +82,8 @@ export function BenchmarkControlPanel({
                 <button
                   className={`rounded-2xl border px-4 py-3 text-sm transition ${
                     provider === value
-                      ? "border-cyan-300/30 bg-cyan-300/12 text-white"
-                      : "border-white/10 bg-white/6 text-slate-300 hover:border-white/20"
+                      ? "neo-nav-active border-[color:var(--border-strong)] text-[color:var(--text-1)]"
+                      : "border-[color:var(--border)] bg-[var(--surface-soft)] text-[color:var(--text-2)] hover:text-[color:var(--text-1)]"
                   }`}
                   key={value}
                   onClick={() => onProviderChange(value)}
@@ -94,8 +94,8 @@ export function BenchmarkControlPanel({
               ))}
             </div>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+          <div className="neo-inset rounded-3xl p-4">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               Benchmark mode
             </p>
             <div className="mt-4 grid grid-cols-2 gap-2">
@@ -103,8 +103,8 @@ export function BenchmarkControlPanel({
                 <button
                   className={`rounded-2xl border px-4 py-3 text-sm transition ${
                     mode === value
-                      ? "border-cyan-300/30 bg-cyan-300/12 text-white"
-                      : "border-white/10 bg-white/6 text-slate-300 hover:border-white/20"
+                      ? "neo-nav-active border-[color:var(--border-strong)] text-[color:var(--text-1)]"
+                      : "border-[color:var(--border)] bg-[var(--surface-soft)] text-[color:var(--text-2)] hover:text-[color:var(--text-1)]"
                   }`}
                   key={value}
                   onClick={() => onModeChange(value)}
@@ -115,73 +115,73 @@ export function BenchmarkControlPanel({
               ))}
             </div>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+          <div className="neo-inset rounded-3xl p-4">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               Security
             </p>
             <div className="mt-4 flex items-start gap-3">
-              <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl border border-cyan-300/15 bg-cyan-300/10 text-cyan-100">
+              <div className="neo-accent mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl">
                 <Shield className="h-4 w-4" />
               </div>
-              <p className="text-sm leading-6 text-slate-300">{BENCHMARK_SECURITY_NOTE}</p>
+              <p className="text-sm leading-6 text-[color:var(--text-2)]">{BENCHMARK_SECURITY_NOTE}</p>
             </div>
           </div>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-[0.88fr_1.12fr]">
-          <div className="rounded-3xl border border-white/10 bg-slate-950/45 p-4">
-            <label className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+          <div className="neo-inset rounded-3xl p-4">
+            <label className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               Exact model tested
             </label>
             <select
-              className="mt-3 w-full rounded-2xl border border-white/10 bg-white/6 px-4 py-3 text-sm text-white outline-none transition focus:border-cyan-300/35"
+              className="mt-3 w-full rounded-2xl border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3 text-sm text-[color:var(--text-1)] outline-none transition focus:border-[color:var(--accent)]"
               onChange={(event) => onModelPresetChange(event.target.value)}
               value={modelPreset}
             >
               {modelOptions.map((option) => (
-                <option className="bg-slate-950" key={option.value} value={option.value}>
+                <option className="bg-[var(--background-elevated)]" key={option.value} value={option.value}>
                   {option.label}
                 </option>
               ))}
-              <option className="bg-slate-950" value="custom">
+              <option className="bg-[var(--background-elevated)]" value="custom">
                 Custom model name
               </option>
             </select>
-            <label className="mt-4 block text-[11px] uppercase tracking-[0.24em] text-slate-500">
+            <label className="mt-4 block text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               Manual model override
             </label>
             <input
-              className="mt-3 w-full rounded-2xl border border-white/10 bg-white/6 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/35"
+              className="mt-3 w-full rounded-2xl border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3 text-sm text-[color:var(--text-1)] outline-none transition placeholder:text-[color:var(--text-3)] focus:border-[color:var(--accent)]"
               onChange={(event) => onCustomModelChange(event.target.value)}
               placeholder={`Enter exact ${providerLabel} model name`}
               value={customModel}
             />
-            <p className="mt-3 text-sm leading-6 text-slate-400">
+            <p className="mt-3 text-sm leading-6 text-[color:var(--text-3)]">
               Use the dropdown for common {providerLabel} baselines or enter the exact
               model string you want to test in live mode.
             </p>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-slate-950/45 p-4">
+          <div className="neo-inset rounded-3xl p-4">
             <div className="flex items-center justify-between gap-3">
-              <label className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+              <label className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
                 {providerLabel} API key
               </label>
               <Badge tone={requiresKey ? "warning" : "neutral"}>
                 {requiresKey ? "Required in live mode" : "Optional in mock mode"}
               </Badge>
             </div>
-            <div className="mt-3 flex items-center gap-2 rounded-2xl border border-white/10 bg-white/6 px-4">
-              <KeyRound className="h-4 w-4 text-slate-500" />
+            <div className="mt-3 flex items-center gap-2 rounded-2xl border border-[color:var(--border)] bg-[var(--surface-soft)] px-4">
+              <KeyRound className="h-4 w-4 text-[color:var(--text-3)]" />
               <input
-                className="h-14 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
+                className="h-14 flex-1 bg-transparent text-sm text-[color:var(--text-1)] outline-none placeholder:text-[color:var(--text-3)]"
                 onChange={(event) => onApiKeyChange(event.target.value)}
                 placeholder={getApiKeyPlaceholder(provider)}
                 type={showKey ? "text" : "password"}
                 value={apiKey}
               />
               <button
-                className="text-slate-400 transition hover:text-white"
+                className="text-[color:var(--text-3)] transition hover:text-[color:var(--text-1)]"
                 onClick={onToggleKeyVisibility}
                 type="button"
               >
@@ -208,7 +208,7 @@ export function BenchmarkControlPanel({
                 Reset session run
               </Button>
             </div>
-            <p className="mt-4 text-sm leading-6 text-slate-400">
+            <p className="mt-4 text-sm leading-6 text-[color:var(--text-3)]">
               The key is never written to a database. In V1 it is passed only for the
               current local run and can be cleared immediately.
             </p>

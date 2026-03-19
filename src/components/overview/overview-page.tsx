@@ -50,10 +50,10 @@ export function OverviewPage() {
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {overviewCards.map(([label, value]) => (
           <Panel className="p-5" key={label}>
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               {label}
             </p>
-            <p className="mt-3 text-xl font-semibold tracking-[-0.04em] text-white">
+            <p className="mt-3 text-xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
               {value}
             </p>
           </Panel>

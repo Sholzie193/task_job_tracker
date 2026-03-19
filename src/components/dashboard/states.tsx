@@ -19,15 +19,15 @@ export function LoadingState({
     <Panel className="h-full">
       <div className="flex h-full flex-col justify-between gap-6">
         <div className="space-y-4">
-          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-cyan-100">
+          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-[var(--accent)]">
             <Orbit className="h-3.5 w-3.5 animate-spin" />
             Benchmark in progress
           </div>
           <div className="space-y-2">
-            <h3 className="text-2xl font-semibold tracking-[-0.04em] text-white">
+            <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
               Evaluating realistic role tasks
             </h3>
-            <p className="text-sm leading-6 text-slate-300">
+            <p className="text-sm leading-6 text-[color:var(--text-2)]">
               The run is stepping through tasks sequentially so the resulting role
               exposure score remains interpretable instead of being a black-box summary.
             </p>
@@ -36,27 +36,27 @@ export function LoadingState({
         <div className="space-y-4">
           <ProgressBar value={progress.percentage} />
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-slate-500">
+            <div className="neo-inset rounded-2xl p-4">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                 Completed
               </p>
-              <p className="mt-2 text-lg font-medium text-white">
+              <p className="mt-2 text-lg font-medium text-[color:var(--text-1)]">
                 {progress.completedTasks} / {progress.totalTasks}
               </p>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-slate-500">
+            <div className="neo-inset rounded-2xl p-4">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                 Active role
               </p>
-              <p className="mt-2 text-lg font-medium text-white">
+              <p className="mt-2 text-lg font-medium text-[color:var(--text-1)]">
                 {progress.activeRoleName}
               </p>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-slate-500">
+            <div className="neo-inset rounded-2xl p-4">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                 Active task
               </p>
-              <p className="mt-2 text-sm font-medium text-white">
+              <p className="mt-2 text-sm font-medium text-[color:var(--text-1)]">
                 {progress.activeTaskTitle}
               </p>
             </div>
@@ -85,13 +85,13 @@ export function ErrorState({
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-rose-100/80">
               Run failed
             </p>
-            <h3 className="text-xl font-semibold text-white">
+            <h3 className="text-xl font-semibold text-[color:var(--text-1)]">
               The benchmark did not complete cleanly
             </h3>
           </div>
         </div>
-        <p className="text-sm leading-6 text-slate-300">{message}</p>
-        <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4 text-sm text-slate-400">
+        <p className="text-sm leading-6 text-[color:var(--text-2)]">{message}</p>
+        <div className="neo-inset rounded-2xl p-4 text-sm text-[color:var(--text-3)]">
           Common causes in live mode are an unavailable model name, an invalid key,
           or a provider-side timeout while evaluating multiple tasks.
         </div>
@@ -111,18 +111,18 @@ export function EmptyState() {
   return (
     <Panel>
       <div className="flex flex-col items-start gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/6 text-cyan-100">
+        <div className="neo-accent flex h-12 w-12 items-center justify-center rounded-2xl">
           <DatabaseZap className="h-5 w-5" />
         </div>
         <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-white">No benchmark run yet</h3>
-          <p className="max-w-xl text-sm leading-6 text-slate-300">
+          <h3 className="text-xl font-semibold text-[color:var(--text-1)]">No benchmark run yet</h3>
+          <p className="max-w-xl text-sm leading-6 text-[color:var(--text-2)]">
             Launch the runner to generate the first role exposure profile. Once a run
             completes, the dashboard will show the provider, model, version, scope,
             and detailed task-level breakdown.
           </p>
         </div>
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/45 px-4 py-2 text-sm text-slate-300">
+        <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-2 text-sm text-[color:var(--text-2)]">
           <SquareDashedMousePointer className="h-4 w-4" />
           Session state only. No database persistence in V1.
         </div>
@@ -130,4 +130,3 @@ export function EmptyState() {
     </Panel>
   );
 }
-

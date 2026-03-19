@@ -1,6 +1,6 @@
 "use client";
 
-import { SESSION_RUN_STORAGE_KEY } from "@/lib/benchmark/constants";
+import { SESSION_RUN_EVENT, SESSION_RUN_STORAGE_KEY } from "@/lib/benchmark/constants";
 import { buildRunId } from "@/lib/benchmark/scoring";
 import type { BenchmarkRunResult } from "@/lib/benchmark/types";
 
@@ -43,6 +43,7 @@ export function storeBenchmarkRun(run: BenchmarkRunResult) {
   }
 
   window.sessionStorage.setItem(SESSION_RUN_STORAGE_KEY, JSON.stringify(run));
+  window.dispatchEvent(new CustomEvent(SESSION_RUN_EVENT, { detail: normalizeRun(run) }));
 }
 
 export function clearStoredBenchmarkRun() {
@@ -51,5 +52,5 @@ export function clearStoredBenchmarkRun() {
   }
 
   window.sessionStorage.removeItem(SESSION_RUN_STORAGE_KEY);
+  window.dispatchEvent(new CustomEvent(SESSION_RUN_EVENT, { detail: null }));
 }
-

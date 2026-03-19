@@ -26,7 +26,7 @@ export function MethodologyPage() {
       <section className="grid gap-4 lg:grid-cols-2">
         {interpretationPoints.map((point) => (
           <Panel className="p-5" key={point}>
-            <p className="text-sm leading-7 text-slate-300">{point}</p>
+            <p className="text-sm leading-7 text-[color:var(--text-2)]">{point}</p>
           </Panel>
         ))}
       </section>

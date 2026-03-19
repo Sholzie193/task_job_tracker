@@ -23,10 +23,10 @@ export function RoleDetailPage({ slug }: { slug: string }) {
         <BackNavButton fallbackHref="/roles" label="Back to roles" />
         <Panel>
           <div className="space-y-4">
-            <h1 className="text-3xl font-semibold tracking-[-0.05em] text-white">
+            <h1 className="text-3xl font-semibold tracking-[-0.05em] text-[color:var(--text-1)]">
               Role not available in this run
             </h1>
-            <p className="text-sm leading-6 text-slate-300">
+            <p className="text-sm leading-6 text-[color:var(--text-2)]">
               This session only exposes the fixed V1 role set. Return to the roles
               index and open one of the benchmarked roles.
             </p>
@@ -69,10 +69,10 @@ export function RoleDetailPage({ slug }: { slug: string }) {
           ["Tasks evaluated", `${role.taskCount}`],
         ].map(([label, value]) => (
           <Panel className="p-5" key={label}>
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-500">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               {label}
             </p>
-            <p className="mt-3 text-xl font-semibold tracking-[-0.04em] text-white">
+            <p className="mt-3 text-xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
               {value}
             </p>
           </Panel>
@@ -83,38 +83,38 @@ export function RoleDetailPage({ slug }: { slug: string }) {
         <Panel className="space-y-4">
           <div>
             <Badge tone="neutral">Role benchmark note</Badge>
-            <p className="mt-4 text-sm leading-6 text-slate-300">
+            <p className="mt-4 text-sm leading-6 text-[color:var(--text-2)]">
               {roleConfig.benchmarkNotes}
             </p>
           </div>
           <div className="grid gap-3">
-            <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-slate-500">
+            <div className="neo-inset rounded-2xl p-4">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                 Top automatable tasks
               </p>
               <div className="mt-3 space-y-2">
                 {role.topAutomatableTasks.map((task) => (
                   <div
-                    className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/6 px-4 py-3"
+                    className="flex items-center justify-between gap-3 rounded-2xl border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3"
                     key={task.taskId}
                   >
-                    <span className="text-sm text-slate-200">{task.title}</span>
+                    <span className="text-sm text-[color:var(--text-1)]">{task.title}</span>
                     <Badge tone="success">{task.score}</Badge>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-slate-500">
+            <div className="neo-inset rounded-2xl p-4">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                 Weakest tasks
               </p>
               <div className="mt-3 space-y-2">
                 {role.weakestTasks.map((task) => (
                   <div
-                    className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/6 px-4 py-3"
+                    className="flex items-center justify-between gap-3 rounded-2xl border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3"
                     key={task.taskId}
                   >
-                    <span className="text-sm text-slate-200">{task.title}</span>
+                    <span className="text-sm text-[color:var(--text-1)]">{task.title}</span>
                     <Badge tone="danger">{task.score}</Badge>
                   </div>
                 ))}
@@ -126,10 +126,10 @@ export function RoleDetailPage({ slug }: { slug: string }) {
         <Panel className="space-y-5">
           <div className="space-y-2">
             <Badge tone="brand">Task list</Badge>
-            <h2 className="text-2xl font-semibold tracking-[-0.04em] text-white">
+            <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
               Compact by default, detailed on demand
             </h2>
-            <p className="text-sm leading-6 text-slate-300">
+            <p className="text-sm leading-6 text-[color:var(--text-2)]">
               Each task starts collapsed. Expand only the tasks you want to inspect
               for rationale, strengths, weaknesses, scoring notes, and output expectations.
             </p>

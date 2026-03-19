@@ -5,5 +5,6 @@ export const DEFAULT_PROVIDER = "openai";
 export const DEFAULT_MODEL = "gpt-5.4";
 export const DEFAULT_SAMPLE_RUN_DATE = "2026-03-18T12:00:00.000Z";
 export const SESSION_RUN_STORAGE_KEY = "ai-task-taker.current-run";
+export const SESSION_RUN_EVENT = "ai-task-taker.run-updated";
 export const BENCHMARK_SECURITY_NOTE =
   "Your API key is used only to run this benchmark for your current session.";

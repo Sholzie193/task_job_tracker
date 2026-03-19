@@ -20,40 +20,40 @@ export function RecentRunCard({
       <div className="flex h-full flex-col gap-5">
         <div className="flex items-center justify-between">
           <Badge tone="neutral">Recent run summary</Badge>
-          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-slate-500">
+          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-[color:var(--text-3)]">
             <Clock3 className="h-3.5 w-3.5" />
             {formatRunDate(run.meta.runDate)}
           </div>
         </div>
         <div className="space-y-3">
-          <h3 className="text-2xl font-semibold tracking-[-0.04em] text-white">
+          <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
             {run.meta.model} mapped strongest into
-            <span className="text-cyan-200"> {highestRole.roleName}</span>.
+            <span className="text-[var(--accent)]"> {highestRole.roleName}</span>.
           </h3>
-          <p className="max-w-xl text-sm leading-6 text-slate-300">
+          <p className="max-w-xl text-sm leading-6 text-[color:var(--text-2)]">
             {isSampleRun
               ? "This dashboard starts with a polished mock baseline so the lab is usable immediately. Run your own benchmark to overwrite it for the current session."
               : "Your latest session result is active. The view below reflects the exact provider, model, version, and role/task scope from that run."}
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-slate-500">
+          <div className="neo-inset rounded-2xl p-4">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-[color:var(--text-3)]">
               <Sparkles className="h-3.5 w-3.5" />
               Highest exposure
             </div>
-            <p className="mt-3 text-lg font-medium text-white">{highestRole.roleName}</p>
-            <p className="mt-1 text-sm text-slate-400">
+            <p className="mt-3 text-lg font-medium text-[color:var(--text-1)]">{highestRole.roleName}</p>
+            <p className="mt-1 text-sm text-[color:var(--text-3)]">
               {highestRole.exposureScore} · {highestRole.exposureBand}
             </p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-slate-500">
+          <div className="neo-inset rounded-2xl p-4">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-[color:var(--text-3)]">
               <Target className="h-3.5 w-3.5" />
               Lowest exposure
             </div>
-            <p className="mt-3 text-lg font-medium text-white">{lowestRole.roleName}</p>
-            <p className="mt-1 text-sm text-slate-400">
+            <p className="mt-3 text-lg font-medium text-[color:var(--text-1)]">{lowestRole.roleName}</p>
+            <p className="mt-1 text-sm text-[color:var(--text-3)]">
               {lowestRole.exposureScore} · {lowestRole.exposureBand}
             </p>
           </div>
@@ -62,4 +62,3 @@ export function RecentRunCard({
     </Panel>
   );
 }
-

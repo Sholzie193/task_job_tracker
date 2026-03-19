@@ -21,7 +21,7 @@ export function MethodologyCard() {
         <div className="grid gap-3">
           {points.map((point) => (
             <div
-              className="rounded-2xl border border-white/10 bg-slate-950/45 px-4 py-3 text-sm leading-6 text-slate-300"
+              className="neo-inset rounded-2xl px-4 py-3 text-sm leading-6 text-[color:var(--text-2)]"
               key={point}
             >
               {point}
@@ -32,4 +32,3 @@ export function MethodologyCard() {
     </section>
   );
 }
-

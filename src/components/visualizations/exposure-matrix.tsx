@@ -11,15 +11,15 @@ import { cn } from "@/lib/utils";
 
 const bandStyles = {
   Minimal:
-    "border-emerald-300/35 bg-linear-to-br from-emerald-300/24 via-emerald-400/12 to-slate-950/82",
+    "border-emerald-300/35 bg-linear-to-br from-emerald-300/22 via-emerald-400/12 to-[var(--surface-2)]",
   Limited:
-    "border-lime-300/34 bg-linear-to-br from-lime-300/22 via-lime-400/10 to-slate-950/82",
+    "border-lime-300/34 bg-linear-to-br from-lime-300/22 via-lime-400/10 to-[var(--surface-2)]",
   Moderate:
-    "border-amber-300/34 bg-linear-to-br from-amber-300/24 via-amber-400/10 to-slate-950/82",
+    "border-amber-300/34 bg-linear-to-br from-amber-300/24 via-amber-400/10 to-[var(--surface-2)]",
   High:
-    "border-orange-400/36 bg-linear-to-br from-orange-300/26 via-orange-500/12 to-slate-950/84",
+    "border-orange-400/36 bg-linear-to-br from-orange-300/26 via-orange-500/12 to-[var(--surface-2)]",
   "Very High":
-    "border-red-400/42 bg-linear-to-br from-red-300/28 via-red-500/14 to-slate-950/84",
+    "border-red-400/42 bg-linear-to-br from-red-300/28 via-red-500/14 to-[var(--surface-2)]",
 } as const;
 
 const bandAccentStyles = {
@@ -104,7 +104,7 @@ function ExposureTile({
     "group relative h-full overflow-hidden rounded-[28px] border p-5 text-left transition",
     bandStyles[role.exposureBand],
     selectedRoleId === role.roleId &&
-      "ring-2 ring-cyan-200/70 ring-offset-2 ring-offset-slate-950",
+      "ring-2 ring-[color:var(--accent)] ring-offset-2 ring-offset-[var(--background)]",
   );
 
   const content = (
@@ -123,18 +123,18 @@ function ExposureTile({
       <div className="relative flex h-full flex-col justify-between">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               {role.roleCategory}
             </p>
-            <h3 className="mt-2 text-lg font-semibold tracking-[-0.03em] text-white">
+            <h3 className="mt-2 text-lg font-semibold tracking-[-0.03em] text-[color:var(--text-1)]">
               {role.roleName}
             </h3>
           </div>
-          <ArrowUpRight className="h-4 w-4 text-white/45 transition group-hover:text-white" />
+          <ArrowUpRight className="h-4 w-4 text-[color:var(--text-3)] transition group-hover:text-[color:var(--text-1)]" />
         </div>
         <div className="space-y-3">
           <div className="flex items-end justify-between gap-4">
-            <p className="text-4xl font-semibold tracking-[-0.06em] text-white">
+            <p className="text-4xl font-semibold tracking-[-0.06em] text-[color:var(--text-1)]">
               {role.exposureScore}
             </p>
             <span
@@ -146,7 +146,7 @@ function ExposureTile({
               {role.exposureBand}
             </span>
           </div>
-          <div className="h-1.5 rounded-full bg-white/10">
+          <div className="h-1.5 rounded-full bg-[color:color-mix(in_srgb,var(--text-1)_10%,transparent)]">
             <div
               className={cn("h-full rounded-full", bandAccentStyles[role.exposureBand])}
               style={{ width: `${role.exposureScore}%` }}

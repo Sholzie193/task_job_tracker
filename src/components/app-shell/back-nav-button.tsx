@@ -29,8 +29,8 @@ export function BackNavButton({
     <button
       aria-label={label}
       className={cn(
-        "inline-flex items-center gap-2 self-start rounded-full border border-white/10 bg-slate-950/60 px-4 py-2 text-sm text-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl transition hover:border-white/20 hover:bg-white/10",
-        "lg:fixed lg:left-6 lg:top-1/2 lg:z-20 lg:h-12 lg:w-12 lg:-translate-y-1/2 lg:justify-center lg:rounded-full lg:px-0",
+        "neo-panel inline-flex items-center gap-2 self-start rounded-2xl px-4 py-2 text-sm text-[color:var(--text-1)] transition hover:-translate-y-0.5",
+        "lg:fixed lg:left-5 lg:top-1/2 lg:z-20 lg:h-12 lg:w-12 lg:-translate-y-1/2 lg:justify-center lg:rounded-2xl lg:px-0",
         className,
       )}
       onClick={handleBack}
@@ -41,4 +41,3 @@ export function BackNavButton({
     </button>
   );
 }
-

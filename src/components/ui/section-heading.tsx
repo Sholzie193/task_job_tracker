@@ -16,14 +16,13 @@ export function SectionHeading({
       <div className="max-w-2xl space-y-3">
         <Badge tone="neutral">{eyebrow}</Badge>
         <div className="space-y-2">
-          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">
+          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)] sm:text-3xl">
             {title}
           </h2>
-          <p className="text-sm leading-6 text-slate-300">{description}</p>
+          <p className="text-sm leading-6 text-[color:var(--text-2)]">{description}</p>
         </div>
       </div>
       {action}
     </div>
   );
 }
-

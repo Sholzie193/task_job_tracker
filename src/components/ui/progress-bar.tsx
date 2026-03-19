@@ -10,15 +10,14 @@ export function ProgressBar({
   return (
     <div
       className={cn(
-        "h-2 overflow-hidden rounded-full bg-white/8 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
+        "neo-inset h-2.5 overflow-hidden rounded-full",
         className,
       )}
     >
       <div
-        className="h-full rounded-full bg-linear-to-r from-cyan-300 via-sky-300 to-indigo-400 transition-[width] duration-500"
+        className="h-full rounded-full transition-[width] duration-500 [background:linear-gradient(145deg,var(--accent-strong),var(--accent))]"
         style={{ width: `${Math.max(0, Math.min(100, value))}%` }}
       />
     </div>
   );
 }
-

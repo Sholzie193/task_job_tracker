@@ -150,10 +150,10 @@ export function RunDetailsPage({ runId }: { runId: string }) {
         <Panel className="p-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h2 className="text-2xl font-semibold tracking-[-0.04em] text-white">
+              <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
                 Requested run not in session storage
               </h2>
-              <p className="mt-2 text-sm leading-6 text-slate-300">
+              <p className="mt-2 text-sm leading-6 text-[color:var(--text-2)]">
                 V1 only keeps the current session run locally. Open the latest available
                 run instead of an older historical id.
               </p>
@@ -211,27 +211,27 @@ export function RunDetailsPage({ runId }: { runId: string }) {
       <section className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
         <ShareResultCard run={run} />
         <Panel className="space-y-4 p-5">
-          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-white">
+          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
             Run navigation
           </h2>
-          <p className="text-sm leading-6 text-slate-300">
+          <p className="text-sm leading-6 text-[color:var(--text-2)]">
             Use the overview page for the calm high-level read, then move into role pages
             when you want the task-by-task explanation. The methodology page keeps the
             interpretation guardrails separate from the dashboard.
           </p>
           <div className="grid gap-3 sm:grid-cols-3">
             <Link href="/overview">
-              <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4 text-sm text-white transition hover:bg-white/8">
+              <div className="neo-inset rounded-2xl p-4 text-sm text-[color:var(--text-1)] transition hover:-translate-y-0.5">
                 Overview
               </div>
             </Link>
             <Link href="/roles">
-              <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4 text-sm text-white transition hover:bg-white/8">
+              <div className="neo-inset rounded-2xl p-4 text-sm text-[color:var(--text-1)] transition hover:-translate-y-0.5">
                 Roles
               </div>
             </Link>
             <Link href="/methodology">
-              <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4 text-sm text-white transition hover:bg-white/8">
+              <div className="neo-inset rounded-2xl p-4 text-sm text-[color:var(--text-1)] transition hover:-translate-y-0.5">
                 Methodology
               </div>
             </Link>
