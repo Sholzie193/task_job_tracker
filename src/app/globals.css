@@ -18,8 +18,8 @@
   --accent: #58c7b4;
   --accent-strong: #74ead6;
   --accent-soft: rgba(88, 199, 180, 0.18);
-  --halo: rgba(116, 234, 214, 0.42);
-  --halo-soft: rgba(88, 199, 180, 0.16);
+  --halo: rgba(114, 255, 107, 0.82);
+  --halo-soft: rgba(114, 255, 107, 0.38);
   --shadow-raised:
     14px 14px 26px rgba(3, 7, 13, 0.28),
     inset 1px 1px 0 rgba(255, 255, 255, 0.04);
@@ -52,8 +52,8 @@
   --accent: #0a7f6c;
   --accent-strong: #11a88d;
   --accent-soft: rgba(17, 168, 141, 0.11);
-  --halo: rgba(17, 168, 141, 0.34);
-  --halo-soft: rgba(17, 168, 141, 0.1);
+  --halo: rgba(46, 224, 77, 0.72);
+  --halo-soft: rgba(46, 224, 77, 0.24);
   --shadow-raised:
     12px 12px 24px rgba(163, 177, 198, 0.22),
     inset 1px 1px 0 rgba(255, 255, 255, 0.92);
@@ -214,11 +214,12 @@
   }
 
   .hover-halo:hover {
-    border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
+    border-color: color-mix(in srgb, #72ff6b 48%, var(--border));
     box-shadow:
       0 0 0 1px var(--halo),
-      0 0 22px -8px var(--halo),
-      0 0 42px -20px var(--halo-soft),
+      0 0 18px -4px var(--halo),
+      0 0 36px -10px var(--halo),
+      0 0 64px -24px var(--halo-soft),
       var(--shadow-soft);
   }
 }
