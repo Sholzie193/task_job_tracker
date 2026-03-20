@@ -12,14 +12,14 @@ export function SectionHeading({
   action?: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-      <div className="max-w-2xl space-y-3">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div className="max-w-2xl space-y-2">
         <Badge tone="neutral">{eyebrow}</Badge>
-        <div className="space-y-2">
-          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)] sm:text-3xl">
+        <div className="space-y-1.5">
+          <h2 className="text-2xl font-medium tracking-[-0.04em] text-[color:var(--text-1)] sm:text-3xl">
             {title}
           </h2>
-          <p className="text-sm leading-6 text-[color:var(--text-2)]">{description}</p>
+          <p className="text-sm leading-5 text-[color:var(--text-2)]">{description}</p>
         </div>
       </div>
       {action}

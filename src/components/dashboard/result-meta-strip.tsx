@@ -24,10 +24,10 @@ export function ResultMetaStrip({
             {isSampleRun ? <Badge tone="neutral">Demo baseline</Badge> : null}
           </div>
           <div className="space-y-2">
-            <h2 className="text-3xl font-semibold tracking-[-0.05em] text-[color:var(--text-1)] sm:text-4xl">
+            <h2 className="text-3xl font-medium tracking-[-0.05em] text-[color:var(--text-1)] sm:text-4xl">
               {providerLabel} {run.meta.model}
             </h2>
-            <p className="text-base text-[color:var(--text-2)]">
+            <p className="text-sm text-[color:var(--text-2)]">
               {BENCHMARK_NAME} {run.meta.benchmarkVersion}
             </p>
             <p className="text-sm text-[color:var(--text-3)]">
@@ -45,7 +45,7 @@ export function ResultMetaStrip({
             ["Scope", `${run.meta.roleCount} roles · ${run.meta.taskCount} tasks`],
           ].map(([label, value]) => (
             <div
-              className="neo-inset rounded-2xl p-4"
+              className="neo-inset rounded-[8px] p-4"
               key={label}
             >
               <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">

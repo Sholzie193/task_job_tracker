@@ -33,27 +33,27 @@ export function OverviewPage() {
         action={
           <div className="flex flex-wrap gap-3">
             <Link href={`/runs/${run.meta.runId}`}>
-              <Button size="lg">Open run details</Button>
+              <Button size="lg">Run details</Button>
             </Link>
             <Link href="/roles">
               <Button size="lg" variant="secondary">
-                Browse roles
+                Roles
               </Button>
             </Link>
           </div>
         }
-        description="A high-signal snapshot of the current benchmark run. Deeper interpretation lives in the role pages, methodology, and run details."
-        eyebrow={isSampleRun ? "Overview · demo baseline" : "Overview"}
-        title="See the benchmark signal first."
+        description="Current benchmark at a glance."
+        eyebrow={isSampleRun ? "Overview · demo" : "Overview"}
+        title="Current benchmark"
       />
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {overviewCards.map(([label, value]) => (
-          <Panel className="p-5" key={label}>
+          <Panel className="p-4" key={label}>
             <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               {label}
             </p>
-            <p className="mt-3 text-xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
+            <p className="mt-2.5 text-xl font-medium tracking-[-0.04em] text-[color:var(--text-1)]">
               {value}
             </p>
           </Panel>

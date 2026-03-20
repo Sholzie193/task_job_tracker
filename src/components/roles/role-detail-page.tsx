@@ -47,15 +47,15 @@ export function RoleDetailPage({ slug }: { slug: string }) {
           <div className="flex flex-wrap gap-3">
             <Link href="/roles">
               <Button size="lg" variant="secondary">
-                Back to roles
+                Roles
               </Button>
             </Link>
             <Link href={`/runs/${run.meta.runId}`}>
-              <Button size="lg">Open run details</Button>
+              <Button size="lg">Run details</Button>
             </Link>
           </div>
         }
-        description={role.summaryRationale}
+        description={`${role.exposureBand} exposure. ${role.taskCount} tasks.`}
         eyebrow={`Role detail · ${role.roleCategory}`}
         title={role.roleName}
       />
@@ -68,11 +68,11 @@ export function RoleDetailPage({ slug }: { slug: string }) {
           ["Human dependency", role.humanDependency],
           ["Tasks evaluated", `${role.taskCount}`],
         ].map(([label, value]) => (
-          <Panel className="p-5" key={label}>
+          <Panel className="p-4" key={label}>
             <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               {label}
             </p>
-            <p className="mt-3 text-xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
+            <p className="mt-2.5 text-xl font-medium tracking-[-0.04em] text-[color:var(--text-1)]">
               {value}
             </p>
           </Panel>
@@ -88,14 +88,14 @@ export function RoleDetailPage({ slug }: { slug: string }) {
             </p>
           </div>
           <div className="grid gap-3">
-            <div className="neo-inset rounded-2xl p-4">
+            <div className="neo-inset rounded-[8px] p-4">
               <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                 Top automatable tasks
               </p>
               <div className="mt-3 space-y-2">
                 {role.topAutomatableTasks.map((task) => (
                   <div
-                    className="flex items-center justify-between gap-3 rounded-2xl border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3"
+                    className="flex items-center justify-between gap-3 rounded-[8px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3"
                     key={task.taskId}
                   >
                     <span className="text-sm text-[color:var(--text-1)]">{task.title}</span>
@@ -104,14 +104,14 @@ export function RoleDetailPage({ slug }: { slug: string }) {
                 ))}
               </div>
             </div>
-            <div className="neo-inset rounded-2xl p-4">
+            <div className="neo-inset rounded-[8px] p-4">
               <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                 Weakest tasks
               </p>
               <div className="mt-3 space-y-2">
                 {role.weakestTasks.map((task) => (
                   <div
-                    className="flex items-center justify-between gap-3 rounded-2xl border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3"
+                    className="flex items-center justify-between gap-3 rounded-[8px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3"
                     key={task.taskId}
                   >
                     <span className="text-sm text-[color:var(--text-1)]">{task.title}</span>
@@ -126,13 +126,10 @@ export function RoleDetailPage({ slug }: { slug: string }) {
         <Panel className="space-y-5">
           <div className="space-y-2">
             <Badge tone="brand">Task list</Badge>
-            <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
-              Compact by default, detailed on demand
+            <h2 className="text-2xl font-medium tracking-[-0.04em] text-[color:var(--text-1)]">
+              Tasks
             </h2>
-            <p className="text-sm leading-6 text-[color:var(--text-2)]">
-              Each task starts collapsed. Expand only the tasks you want to inspect
-              for rationale, strengths, weaknesses, scoring notes, and output expectations.
-            </p>
+            <p className="text-sm leading-6 text-[color:var(--text-2)]">Collapsed by default.</p>
           </div>
           <TaskAccordionList role={role} />
         </Panel>

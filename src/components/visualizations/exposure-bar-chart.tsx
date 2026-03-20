@@ -18,9 +18,9 @@ export function ExposureBarChart({ run }: { run: BenchmarkRunResult }) {
   return (
     <section className="space-y-5">
       <SectionHeading
-        eyebrow="Benchmark Overview"
-        title="Role exposure distribution"
-        description="A quick comparative view of the model’s exposure profile across all nine roles in the V1 benchmark."
+        eyebrow="Distribution"
+        title="Exposure distribution"
+        description="Nine-role spread."
       />
       <Panel className="h-[420px]">
         <ExposureBarChartClient run={run} />
@@ -28,4 +28,3 @@ export function ExposureBarChart({ run }: { run: BenchmarkRunResult }) {
     </section>
   );
 }
-

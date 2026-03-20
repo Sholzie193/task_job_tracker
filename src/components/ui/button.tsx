@@ -4,12 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-2xl border text-sm font-medium transition duration-200 disabled:pointer-events-none disabled:opacity-45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60",
+  "inline-flex items-center justify-center rounded-[8px] border text-sm font-medium transition duration-200 disabled:pointer-events-none disabled:opacity-45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60",
   {
     variants: {
       variant: {
         primary:
-          "border-transparent px-5 py-3 text-white shadow-[0_16px_34px_-18px_color-mix(in_srgb,var(--accent)_56%,transparent)] [background:linear-gradient(145deg,var(--accent-strong),var(--accent))] hover:-translate-y-0.5 hover:brightness-105",
+          "border-transparent px-5 py-3 text-white shadow-[0_10px_20px_-14px_color-mix(in_srgb,var(--accent)_40%,transparent)] [background:linear-gradient(145deg,var(--accent-strong),var(--accent))] hover:-translate-y-0.5 hover:brightness-105",
         secondary:
           "border-[color:var(--border)] bg-[var(--surface-2)] px-5 py-3 text-[color:var(--text-1)] shadow-[var(--shadow-pill)] hover:-translate-y-0.5",
         ghost:
@@ -19,8 +19,8 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-11",
-        sm: "h-9 px-4 text-xs",
-        lg: "h-12 px-6 text-sm",
+        sm: "h-9 px-3.5 text-xs",
+        lg: "h-11 px-5 text-sm",
       },
     },
     defaultVariants: {

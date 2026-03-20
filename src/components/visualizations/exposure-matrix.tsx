@@ -65,9 +65,9 @@ export function ExposureMatrix({
   return (
     <section className="space-y-5">
       <SectionHeading
-        eyebrow="Role Exposure Visualization"
+        eyebrow="Role map"
         title="Exposure matrix"
-        description="Click a role to inspect its rationale, strongest task clusters, weakest tasks, and human dependency profile."
+        description="Open a role for detail."
       />
       <Panel>
         <div className="grid gap-4 lg:grid-cols-12 lg:auto-rows-[140px]">
@@ -106,7 +106,7 @@ function ExposureTile({
   );
 
   const tileClassName = cn(
-    "group relative h-full overflow-hidden rounded-[28px] border p-5 text-left transition",
+    "group relative h-full overflow-hidden rounded-[4px] border p-4 text-left transition",
     bandStyles[role.exposureBand],
     selectedRoleId === role.roleId &&
       "ring-2 ring-[color:var(--accent)] ring-offset-2 ring-offset-[var(--background)]",
@@ -117,7 +117,7 @@ function ExposureTile({
       className={tileClassName}
       initial={{ opacity: 0, y: 16 }}
       transition={{ duration: 0.28, delay: index * 0.03 }}
-      whileHover={{ y: -4, scale: 1.01 }}
+      whileHover={{ y: -2 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
     >
@@ -131,7 +131,7 @@ function ExposureTile({
             <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               {role.roleCategory}
             </p>
-            <h3 className="mt-2 text-lg font-semibold tracking-[-0.03em] text-[color:var(--text-1)]">
+            <h3 className="mt-2 text-lg font-medium tracking-[-0.03em] text-[color:var(--text-1)]">
               {role.roleName}
             </h3>
           </div>
@@ -139,7 +139,7 @@ function ExposureTile({
         </div>
         <div className="space-y-3">
           <div className="flex items-end justify-between gap-4">
-            <p className="text-4xl font-semibold tracking-[-0.06em] text-[color:var(--text-1)]">
+            <p className="text-4xl font-medium tracking-[-0.06em] text-[color:var(--text-1)]">
               {role.exposureScore}
             </p>
             <span

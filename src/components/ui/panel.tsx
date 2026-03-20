@@ -10,7 +10,7 @@ export function Panel({
   return (
     <div
       className={cn(
-        "neo-panel rounded-[30px] p-6",
+        "neo-panel rounded-[10px] p-6",
         className,
       )}
     >

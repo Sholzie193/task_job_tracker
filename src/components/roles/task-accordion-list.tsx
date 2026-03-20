@@ -24,7 +24,7 @@ export function TaskAccordionList({ role }: { role: RoleExposureResult }) {
 
         return (
           <details
-            className="neo-panel group rounded-3xl p-0"
+            className="neo-panel group rounded-[8px] p-0"
             key={task.taskId}
           >
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
@@ -38,7 +38,7 @@ export function TaskAccordionList({ role }: { role: RoleExposureResult }) {
                 <h3 className="text-lg font-medium tracking-[-0.03em] text-[color:var(--text-1)]">
                   {task.taskTitle}
                 </h3>
-                <div className="flex flex-wrap gap-4 text-sm text-[color:var(--text-3)]">
+                <div className="flex flex-wrap gap-4 text-sm text-[color:var(--text-2)]">
                   <span>Score {task.combinedScore}</span>
                   <span>Automation {task.taskAutomationConfidence}</span>
                   <span>Autonomy {task.autonomyConfidence}</span>
@@ -49,7 +49,7 @@ export function TaskAccordionList({ role }: { role: RoleExposureResult }) {
             <div className="border-t border-[color:var(--border)] px-5 py-5">
               <div className="grid gap-4 lg:grid-cols-[0.88fr_1.12fr]">
                 <div className="space-y-4">
-                  <div className="neo-inset rounded-2xl p-4">
+                  <div className="neo-inset rounded-[8px] p-4">
                     <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                       Task description
                     </p>
@@ -57,14 +57,14 @@ export function TaskAccordionList({ role }: { role: RoleExposureResult }) {
                       {task.taskDescription}
                     </p>
                   </div>
-                  <div className="neo-inset rounded-2xl p-4">
+                  <div className="neo-inset rounded-[8px] p-4">
                     <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                       Rationale
                     </p>
                     <p className="mt-3 text-sm leading-6 text-[color:var(--text-2)]">{task.reasoning}</p>
                   </div>
                   {taskConfig ? (
-                    <div className="neo-inset rounded-2xl p-4">
+                    <div className="neo-inset rounded-[8px] p-4">
                       <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                         Extra notes
                       </p>
@@ -77,14 +77,14 @@ export function TaskAccordionList({ role }: { role: RoleExposureResult }) {
                   ) : null}
                 </div>
                 <div className="grid gap-4">
-                  <div className="neo-inset rounded-2xl p-4">
+                  <div className="neo-inset rounded-[8px] p-4">
                     <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                       Strengths
                     </p>
                     <div className="mt-3 space-y-2">
                       {task.strengths.map((strength) => (
                         <div
-                          className="rounded-2xl border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3 text-sm leading-6 text-[color:var(--text-2)]"
+                          className="rounded-[8px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3 text-sm leading-6 text-[color:var(--text-2)]"
                           key={strength}
                         >
                           {strength}
@@ -92,14 +92,14 @@ export function TaskAccordionList({ role }: { role: RoleExposureResult }) {
                       ))}
                     </div>
                   </div>
-                  <div className="neo-inset rounded-2xl p-4">
+                  <div className="neo-inset rounded-[8px] p-4">
                     <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                       Weaknesses
                     </p>
                     <div className="mt-3 space-y-2">
                       {task.weaknesses.map((weakness) => (
                         <div
-                          className="rounded-2xl border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3 text-sm leading-6 text-[color:var(--text-2)]"
+                          className="rounded-[8px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3 text-sm leading-6 text-[color:var(--text-2)]"
                           key={weakness}
                         >
                           {weakness}

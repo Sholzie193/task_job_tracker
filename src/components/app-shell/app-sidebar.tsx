@@ -57,9 +57,9 @@ export function AppSidebar() {
 
   return (
     <aside className="hidden w-[286px] shrink-0 flex-col border-r border-[color:var(--border)] bg-[var(--sidebar-surface)] px-5 py-5 lg:flex">
-      <div className="neo-panel rounded-[30px] p-4">
+      <div className="neo-panel rounded-[10px] p-4">
         <div className="flex items-center gap-3">
-          <div className="neo-accent flex h-11 w-11 items-center justify-center rounded-2xl">
+          <div className="neo-accent flex h-11 w-11 items-center justify-center rounded-[8px]">
             <ScanSearch className="h-5 w-5" />
           </div>
           <div>
@@ -80,7 +80,7 @@ export function AppSidebar() {
           return (
             <Link
               className={cn(
-                "group relative flex items-center gap-3 rounded-[22px] border px-4 py-3 text-sm font-medium transition",
+                "group relative flex items-center gap-3 rounded-[8px] border px-4 py-3 text-sm font-medium transition",
                 isActive
                   ? "neo-nav-active border-[color:var(--border-strong)] text-[color:var(--text-1)]"
                   : "neo-surface border-[color:var(--border)] text-[color:var(--text-2)] hover:text-[color:var(--text-1)]",
@@ -99,7 +99,7 @@ export function AppSidebar() {
       </nav>
 
       <div className="mt-auto space-y-4">
-        <div className="neo-panel space-y-4 rounded-[28px] p-4">
+        <div className="neo-panel space-y-4 rounded-[10px] p-4">
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
@@ -114,7 +114,7 @@ export function AppSidebar() {
             </Badge>
           </div>
           <div className="grid gap-3">
-            <div className="neo-inset rounded-[22px] px-4 py-3">
+            <div className="neo-inset rounded-[8px] px-4 py-3">
               <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                 Scope
               </p>
@@ -122,7 +122,7 @@ export function AppSidebar() {
                 {run.meta.roleCount} roles · {run.meta.taskCount} tasks
               </p>
             </div>
-            <div className="flex items-center justify-between gap-3 rounded-[22px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3">
+            <div className="flex items-center justify-between gap-3 rounded-[8px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3">
               <div>
                 <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                   Run date
@@ -136,7 +136,7 @@ export function AppSidebar() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between rounded-[24px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3">
+        <div className="flex items-center justify-between rounded-[8px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3">
           <div>
             <p className="text-xs font-medium text-[color:var(--text-1)]">Theme</p>
             <p className="text-xs text-[color:var(--text-3)]">Light or dark neomorphism</p>
