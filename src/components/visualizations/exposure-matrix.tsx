@@ -106,7 +106,7 @@ function ExposureTile({
   );
 
   const tileClassName = cn(
-    "group relative h-full overflow-hidden rounded-[4px] border p-4 text-left transition",
+    "hover-halo group relative h-full overflow-hidden rounded-[4px] border p-4 text-left transition",
     bandStyles[role.exposureBand],
     selectedRoleId === role.roleId &&
       "ring-2 ring-[color:var(--accent)] ring-offset-2 ring-offset-[var(--background)]",
