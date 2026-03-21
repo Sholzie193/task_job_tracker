@@ -127,24 +127,24 @@ function ExposureTile({
       </div>
       <div className="relative flex h-full flex-col justify-between">
         <div className="flex items-start justify-between gap-4">
-          <div>
+          <div className="min-w-0">
             <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
               {role.roleCategory}
             </p>
-            <h3 className="mt-2 text-lg font-medium tracking-[-0.03em] text-[color:var(--text-1)]">
+            <h3 className="mt-2 text-lg leading-tight font-medium tracking-[-0.03em] text-[color:var(--text-1)]">
               {role.roleName}
             </h3>
           </div>
-          <ArrowUpRight className="h-4 w-4 text-[color:var(--text-3)] transition group-hover:text-[color:var(--text-1)]" />
+          <ArrowUpRight className="h-4 w-4 shrink-0 text-[color:var(--text-3)] transition group-hover:text-[color:var(--text-1)]" />
         </div>
         <div className="space-y-3">
-          <div className="flex items-end justify-between gap-4">
-            <p className="text-4xl font-medium tracking-[-0.06em] text-[color:var(--text-1)]">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <p className="shrink-0 text-4xl font-medium tracking-[-0.06em] text-[color:var(--text-1)]">
               {role.exposureScore}
             </p>
             <span
               className={cn(
-                "inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em]",
+                "inline-flex max-w-full items-center rounded-[6px] border px-2.5 py-1 text-[10px] leading-none font-medium uppercase tracking-[0.18em]",
                 bandBadgeStyles[role.exposureBand],
               )}
             >
