@@ -7,7 +7,7 @@ import { ArrowUpRight, Activity, FileText, LayoutDashboard, Users } from "lucide
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BENCHMARK_VERSION, PRODUCT_NAME } from "@/lib/benchmark/constants";
+import { PRODUCT_NAME } from "@/lib/benchmark/constants";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -20,22 +20,22 @@ const links = [
 const sectionMeta = {
   "/overview": {
     title: "Overview",
-    description: "Current run",
+    description: "Overview",
     icon: LayoutDashboard,
   },
   "/roles": {
     title: "Roles",
-    description: "Role index",
+    description: "Exposure index",
     icon: Users,
   },
   "/methodology": {
     title: "Methodology",
-    description: "Reading guide",
+    description: "Method",
     icon: FileText,
   },
   "/runs": {
     title: "Run Details",
-    description: "Runner and metadata",
+    description: "Runner",
     icon: Activity,
   },
 } as const;
@@ -66,16 +66,16 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-30 px-4 pt-4 sm:px-6 lg:px-8">
-      <div className="neo-panel mx-auto flex max-w-[1480px] flex-col gap-4 rounded-[10px] px-4 py-3 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex items-center gap-4">
-          <div className="neo-surface flex h-11 w-11 items-center justify-center rounded-[8px] border border-[color:var(--border)] text-[var(--accent)]">
+      <div className="mx-auto flex max-w-[1480px] flex-col gap-4 border-b border-[color:var(--border)] px-1 pb-3 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex items-center gap-3">
+          <div className="neo-surface flex h-10 w-10 items-center justify-center rounded-[6px] border border-[color:var(--border)] text-[var(--accent)]">
             <SectionIcon className="h-4.5 w-4.5" />
           </div>
           <div>
             <p className="text-sm font-medium tracking-[-0.03em] text-[color:var(--text-1)]">
               {currentSection.title}
             </p>
-            <p className="mt-0.5 text-xs uppercase tracking-[0.22em] text-[color:var(--text-3)]">
+            <p className="mt-0.5 text-[11px] uppercase tracking-[0.2em] text-[color:var(--text-3)]">
               {currentSection.description}
             </p>
           </div>
@@ -88,7 +88,7 @@ export function SiteHeader() {
             return (
               <Link
                 className={cn(
-                  "rounded-[8px] border px-3 py-2 text-sm transition",
+                  "rounded-[6px] border px-3 py-2 text-sm transition",
                   isActive
                     ? "neo-nav-active border-[color:var(--border-strong)] text-[color:var(--text-1)]"
                     : "border-[color:var(--border)] bg-[var(--surface-soft)] text-[color:var(--text-2)] hover:text-[color:var(--text-1)]",
@@ -103,21 +103,18 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex flex-wrap items-center gap-2">
-          <Link className="hidden lg:block" href="/overview">
-            <div className="rounded-[8px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-2.5">
-              <p className="text-xs font-medium text-[color:var(--text-1)]">{PRODUCT_NAME}</p>
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
-                {BENCHMARK_VERSION} local lab
-              </p>
-            </div>
+          <Link className="hidden lg:flex lg:items-center lg:gap-3" href="/overview">
+            <p className="text-sm font-medium tracking-[-0.03em] text-[color:var(--text-1)]">
+              {PRODUCT_NAME}
+            </p>
           </Link>
           <Badge tone="neutral" className="hidden sm:inline-flex">
-            OpenAI + Anthropic
+            Frontier models
           </Badge>
           <ThemeToggle />
           <Link href="/runs/latest">
             <Button size="sm" className="gap-2">
-              Run benchmark
+              Run
               <ArrowUpRight className="h-3.5 w-3.5" />
             </Button>
           </Link>

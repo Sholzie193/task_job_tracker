@@ -67,9 +67,9 @@ export function ExposureMatrix({
       <SectionHeading
         eyebrow="Role map"
         title="Exposure matrix"
-        description="Open a role for detail."
+        description="Select a role."
       />
-      <Panel>
+      <Panel className="p-4">
         <div className="grid gap-4 lg:grid-cols-12 lg:auto-rows-[140px]">
           {roles.map((role, index) => (
             <ExposureTile
@@ -117,7 +117,7 @@ function ExposureTile({
       className={tileClassName}
       initial={{ opacity: 0, y: 16 }}
       transition={{ duration: 0.28, delay: index * 0.03 }}
-      whileHover={{ y: -2 }}
+      whileHover={{ y: -2, x: 2 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
     >

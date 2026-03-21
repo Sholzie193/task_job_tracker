@@ -11,7 +11,6 @@ import {
   Users,
 } from "lucide-react";
 
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Badge } from "@/components/ui/badge";
 import { useCurrentBenchmarkRun } from "@/lib/session/use-current-benchmark-run";
 import { cn, formatShortDate } from "@/lib/utils";
@@ -56,34 +55,32 @@ export function AppSidebar() {
   }
 
   return (
-    <aside className="hidden w-[286px] shrink-0 flex-col border-r border-[color:var(--border)] bg-[var(--sidebar-surface)] px-5 py-5 lg:flex">
-      <div className="neo-panel rounded-[10px] p-4">
-        <div className="flex items-center gap-3">
-          <div className="neo-accent flex h-11 w-11 items-center justify-center rounded-[8px]">
+    <aside className="hidden w-[268px] shrink-0 flex-col border-r border-[color:var(--border)] bg-[var(--sidebar-surface)] px-4 py-5 lg:flex">
+      <div className="flex items-center gap-3 border-b border-[color:var(--border)] pb-5">
+        <div className="neo-accent flex h-11 w-11 items-center justify-center rounded-[6px]">
             <ScanSearch className="h-5 w-5" />
-          </div>
-          <div>
-            <p className="text-sm font-semibold tracking-[-0.03em] text-[color:var(--text-1)]">
-              Frontier Task
-            </p>
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[color:var(--text-3)]">
-              Exposure Lab
-            </p>
-          </div>
+        </div>
+        <div>
+          <p className="text-sm font-semibold tracking-[-0.03em] text-[color:var(--text-1)]">
+            Frontier Task
+          </p>
+          <p className="text-[11px] uppercase tracking-[0.28em] text-[color:var(--text-3)]">
+            Exposure Lab
+          </p>
         </div>
       </div>
 
-      <nav className="mt-6 space-y-2">
+      <nav className="mt-6 space-y-1.5">
         {links.map((link) => {
           const isActive = isLinkActive(link.href);
 
           return (
             <Link
               className={cn(
-                "group relative flex items-center gap-3 rounded-[8px] border px-4 py-3 text-sm font-medium transition",
+                "group relative flex items-center gap-3 rounded-[6px] border px-3.5 py-2.5 text-sm font-medium transition",
                 isActive
                   ? "neo-nav-active border-[color:var(--border-strong)] text-[color:var(--text-1)]"
-                  : "neo-surface border-[color:var(--border)] text-[color:var(--text-2)] hover:text-[color:var(--text-1)]",
+                  : "border-transparent text-[color:var(--text-2)] hover:border-[color:var(--border)] hover:bg-[var(--surface-soft)] hover:text-[color:var(--text-1)]",
               )}
               href={link.href}
               key={link.href}
@@ -99,7 +96,7 @@ export function AppSidebar() {
       </nav>
 
       <div className="mt-auto space-y-4">
-        <div className="neo-panel space-y-4 rounded-[10px] p-4">
+        <div className="space-y-4 border-t border-[color:var(--border)] pt-5">
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="text-[11px] uppercase tracking-[0.24em] text-[color:var(--text-3)]">
@@ -114,7 +111,7 @@ export function AppSidebar() {
             </Badge>
           </div>
           <div className="grid gap-3">
-            <div className="neo-inset rounded-[8px] px-4 py-3">
+            <div className="neo-inset rounded-[6px] px-4 py-3">
               <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                 Scope
               </p>
@@ -122,7 +119,7 @@ export function AppSidebar() {
                 {run.meta.roleCount} roles · {run.meta.taskCount} tasks
               </p>
             </div>
-            <div className="flex items-center justify-between gap-3 rounded-[8px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3">
+            <div className="flex items-center justify-between gap-3 rounded-[6px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3">
               <div>
                 <p className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-3)]">
                   Run date
@@ -134,14 +131,6 @@ export function AppSidebar() {
               <Rocket className="h-4 w-4 text-[var(--accent)]" />
             </div>
           </div>
-        </div>
-
-        <div className="flex items-center justify-between rounded-[8px] border border-[color:var(--border)] bg-[var(--surface-soft)] px-4 py-3">
-          <div>
-            <p className="text-xs font-medium text-[color:var(--text-1)]">Theme</p>
-            <p className="text-xs text-[color:var(--text-3)]">Light or dark neomorphism</p>
-          </div>
-          <ThemeToggle />
         </div>
       </div>
     </aside>

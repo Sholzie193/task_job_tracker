@@ -20,9 +20,9 @@ export function ExposureBarChart({ run }: { run: BenchmarkRunResult }) {
       <SectionHeading
         eyebrow="Distribution"
         title="Exposure distribution"
-        description="Nine-role spread."
+        description="Across 9 roles."
       />
-      <Panel className="h-[420px]">
+      <Panel className="h-[420px] p-4">
         <ExposureBarChartClient run={run} />
       </Panel>
     </section>

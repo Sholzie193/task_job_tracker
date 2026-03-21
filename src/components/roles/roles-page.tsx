@@ -21,23 +21,23 @@ export function RolesPage() {
       <PageIntro
         action={
           <Link href={`/runs/${run.meta.runId}`}>
-            <Button size="lg">Open current run</Button>
+            <Button size="lg">Run details</Button>
           </Link>
         }
-        description="Each role has a dedicated detail page. Open a role to see compact task summaries first, then expand individual tasks only when you want the rationale and caveats."
-        eyebrow={isSampleRun ? "Roles · demo baseline" : "Roles"}
-        title="Explore role exposure one role at a time."
+        description="Open a role for task-level detail."
+        eyebrow={isSampleRun ? "Demo baseline" : "Roles"}
+        title="Role exposure"
       />
 
-      <section className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
+      <section className="grid gap-3 lg:grid-cols-2 xl:grid-cols-3">
         {roles.map((role) => (
           <Link href={`/roles/${role.roleId}`} key={role.roleId}>
-            <Panel className="h-full p-5 transition hover:-translate-y-1">
-              <div className="flex h-full flex-col gap-5">
+            <Panel className="h-full p-4 transition hover:-translate-y-1">
+              <div className="flex h-full flex-col gap-4">
                 <div className="flex items-start justify-between gap-3">
                   <div className="space-y-2">
                     <Badge tone="neutral">{role.roleCategory}</Badge>
-                    <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
+                    <h2 className="text-2xl font-medium tracking-[-0.04em] text-[color:var(--text-1)]">
                       {role.roleName}
                     </h2>
                   </div>
@@ -47,7 +47,7 @@ export function RolesPage() {
                   {role.summaryRationale}
                 </p>
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="neo-inset rounded-2xl p-3">
+                  <div className="neo-inset rounded-[6px] p-3">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--text-3)]">
                       Band
                     </p>
@@ -55,7 +55,7 @@ export function RolesPage() {
                       {role.exposureBand}
                     </p>
                   </div>
-                  <div className="neo-inset rounded-2xl p-3">
+                  <div className="neo-inset rounded-[6px] p-3">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--text-3)]">
                       Automation
                     </p>
@@ -63,7 +63,7 @@ export function RolesPage() {
                       {role.averageAutomation}
                     </p>
                   </div>
-                  <div className="neo-inset rounded-2xl p-3">
+                  <div className="neo-inset rounded-[6px] p-3">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--text-3)]">
                       Autonomy
                     </p>

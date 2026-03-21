@@ -133,17 +133,17 @@ export function RunDetailsPage({ runId }: { runId: string }) {
           <div className="flex flex-wrap gap-3">
             <Link href="/overview">
               <Button size="lg" variant="secondary">
-                Back to overview
+                Overview
               </Button>
             </Link>
             <Link href="/roles">
-              <Button size="lg">Browse roles</Button>
+              <Button size="lg">Roles</Button>
             </Link>
           </div>
         }
-        description="This page holds the runner, session-specific metadata, and the broader run summary. It keeps the dense operational details off the overview page."
-        eyebrow={isSampleRun ? "Run details · demo baseline" : "Run details"}
-        title="Run, inspect, and replace the current benchmark session."
+        description="Run, inspect, replace."
+        eyebrow={isSampleRun ? "Demo baseline" : "Run details"}
+        title="Benchmark run"
       />
 
       {!requestedRunMatches ? (
@@ -211,27 +211,23 @@ export function RunDetailsPage({ runId }: { runId: string }) {
       <section className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
         <ShareResultCard run={run} />
         <Panel className="space-y-4 p-5">
-          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text-1)]">
+          <h2 className="text-2xl font-medium tracking-[-0.04em] text-[color:var(--text-1)]">
             Run navigation
           </h2>
-          <p className="text-sm leading-6 text-[color:var(--text-2)]">
-            Use the overview page for the calm high-level read, then move into role pages
-            when you want the task-by-task explanation. The methodology page keeps the
-            interpretation guardrails separate from the dashboard.
-          </p>
+          <p className="text-sm leading-6 text-[color:var(--text-2)]">Move by surface.</p>
           <div className="grid gap-3 sm:grid-cols-3">
             <Link href="/overview">
-              <div className="neo-inset rounded-2xl p-4 text-sm text-[color:var(--text-1)] transition hover:-translate-y-0.5">
+              <div className="neo-inset rounded-[6px] p-4 text-sm text-[color:var(--text-1)] transition hover:-translate-y-0.5">
                 Overview
               </div>
             </Link>
             <Link href="/roles">
-              <div className="neo-inset rounded-2xl p-4 text-sm text-[color:var(--text-1)] transition hover:-translate-y-0.5">
+              <div className="neo-inset rounded-[6px] p-4 text-sm text-[color:var(--text-1)] transition hover:-translate-y-0.5">
                 Roles
               </div>
             </Link>
             <Link href="/methodology">
-              <div className="neo-inset rounded-2xl p-4 text-sm text-[color:var(--text-1)] transition hover:-translate-y-0.5">
+              <div className="neo-inset rounded-[6px] p-4 text-sm text-[color:var(--text-1)] transition hover:-translate-y-0.5">
                 Methodology
               </div>
             </Link>

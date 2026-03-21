@@ -16,9 +16,9 @@ export function MethodologyPage() {
     <AppShell>
       <BackNavButton fallbackHref="/overview" label="Back to overview" />
       <PageIntro
-        description="Interpretation lives here instead of on the overview page so the main dashboard can stay calm and high-signal."
+        description="How to read the benchmark."
         eyebrow="Methodology"
-        title="Understand what the benchmark means before over-reading the score."
+        title="Interpretation"
       />
 
       <MethodologyCard />
